@@ -1,0 +1,94 @@
+<div class="main">
+    <!-- support infinite scroll (!!) to load beers -->
+    <div class="container">
+      <div class="row equal">
+        
+        <!-- list of beers -->
+        <div class="item-border col-md-6 col-lg-4" 
+            *ngFor="let beer of (beersObservable | async)">
+                <!-- | search:'name,tagline':query" -->
+
+                <!-- one beer -->
+                <beer-item [beer]='beer' [fav]="favIds.includes(beer.id)"></beer-item>
+        </div>
+
+      </div>
+    </div>
+</div>
+
+<!-- spinner 
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+-->
+
+
+
+<!-- modal -->
+<div id="beerModal" class="modal fade" tabindex="-1" role="dialog" 
+  aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    
+    <div class="modal-body">
+    <!-- close button -->
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="clear"></div>
+    
+    <!-- current beer -->
+    <div class="modal-item row">
+    
+      <div class="col-6 offset-3 col-sm-3 offset-sm-0">
+        <img class="image" src="{{currentBeer.image_url}}" alt="{{currentBeer.name}}">
+      </div>
+      
+      <div class="col-sm-9 description">
+        <h2 class="orange">{{currentBeer.name}}</h2>
+        <p class="light tag">{{currentBeer.tagline}}</p>
+        <div class="line"></div>
+        
+        <div class="row">
+          <p class="col-xs-12 col-sm-4 col-lg-3"><span class="bold">IBU:</span> {{currentBeer.ibu}}</p>
+          <p class="col-xs-12 col-sm-4 col-lg-3"><span class="bold">ABV:</span> {{currentBeer.abv}}%</p>
+          <p class="col-xs-12 col-sm-4 col-lg-3"><span class="bold">EBC:</span> {{currentBeer.ebc}}</p>
+        </div>
+
+        <p>{{currentBeer.description}}</p>
+        
+        <p class="bold">Best served with:</p>
+        <ul>
+          <li *ngFor="let food of currentBeer.food_pairing">{{food}}</li>
+        </ul>
+      </div>
+    </div>
+    
+    
+    
+    <!-- suggestions -->
+    <h3 class="orange">You might also like:</h3>
+    <div class="row">
+      <div class="similar-margin col-4">
+        <div class="similar">
+          <img class="image" src="assets/images/beer-test.jpg" alt="-- Beer Name --">
+          <p class="bold center">Beer Name</p>
+        </div>
+      </div>
+      <!-- copy -->
+      <div class="similar-margin col-4">
+        <div class="similar">
+          <img class="image" src="assets/images/beer-test.jpg" alt="-- Beer Name --">
+          <p class="bold center">Beer Name</p>
+        </div>
+      </div>
+      <div class="similar-margin col-4">
+        <div class="similar">
+          <img class="image" src="assets/images/beer-test.jpg" alt="-- Beer Name --">
+          <p class="bold center">Beer Name</p>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+  </div>
+</div>
