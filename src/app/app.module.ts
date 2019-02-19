@@ -22,7 +22,6 @@ import { FavouritesComponent } from './favourites/favourites.component';
 
 // modules
 import { AppRoutingModule } from './app-routing.module';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { MaterialModule } from './material.module'
 import { NGPrimeModule } from './primeng.module';
 import { ToastrModule } from 'ngx-toastr';
@@ -56,7 +55,6 @@ import { BeerItemComponent } from './beer-list/beer-item/beer-item.component';
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
-    ChartsModule,
     NGPrimeModule,
     CalendarModule,
     TranslateModule.forRoot({
