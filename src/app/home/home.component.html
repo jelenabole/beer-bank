@@ -1,0 +1,19 @@
+<app-nav></app-nav>
+
+<!-- jumbotron = header -->
+<div class="jumbotron">
+  <h1>The Beer Bank</h1>
+  <p>Find your favourite beer here</p>
+
+  <div class="container">
+    <div class=" col-md-8 offset-md-2 offset-lg-3 col-lg-6">
+      <input id="search" class="form-control" type="text" name="search"
+      placeholder="Search for beer name" [(ngModel)]="query">
+      <p id="advanced-search"><a href="#/search">Advanced Search</a></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- all beers -->
+<beer-list></beer-list>
