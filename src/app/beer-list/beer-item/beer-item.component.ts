@@ -7,7 +7,6 @@ import { BeerListComponent } from '../beer-list.component';
     selector: 'beer-item',
     templateUrl: './beer-item.component.html',
     styleUrls: ['./beer-item.component.scss'],
-    providers: [FavouritesService]
 })
 export class BeerItemComponent {
     @Input() beer: Beer;
@@ -21,6 +20,7 @@ export class BeerItemComponent {
     changeFavStatus(id: number) {
         this.favouriteService.changeFavStatus(id);
         this.fav = !this.fav;
+        this.beerList.reloadData();
     }
 
     openModal(id: number) {

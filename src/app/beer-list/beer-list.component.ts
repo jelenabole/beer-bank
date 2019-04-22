@@ -8,28 +8,25 @@ import { Observable } from 'rxjs';
     selector: 'beer-list',
     templateUrl: './beer-list.component.html',
     styleUrls: ['./beer-list.component.scss'],
-    providers: [BeerService, FavouritesService]
 })
 export class BeerListComponent implements OnInit {
     
-    beersObservable: Observable<Beer[]>;
-    favIds: Array<number>;
+    @Input() favFiltering: Boolean = false;
 
+    beersObservable: Observable<Beer[]>;
     beerList: Array<Beer>;
     currentBeer: Beer = new Beer();
+    favIds: Array<number>;
 
     // needs observable
     // add spinner ???
     showSpinner = true;
 
-    constructor(private beerService: BeerService, private favouritesService: FavouritesService) {
-        this.beersObservable = beerService.getAllBeers();
-        this.favIds = this.favouritesService.getFavouriteIds();
-    }
-    // this.selectedClassroom.subjects = JSON.parse(JSON.stringify(this.allSubjects));
+    constructor(private beerService: BeerService, private favouritesService: FavouritesService) { }
 
     ngOnInit() {
-        console.log("beer list component");
+        this.favIds = this.favouritesService.getFavouriteIds();
+        this.beersObservable = this.beerService.getAllBeers();
 
         // remove spinner and create list of beers (normal):
         this.beersObservable.subscribe((x) => {
@@ -38,9 +35,16 @@ export class BeerListComponent implements OnInit {
         });
     }
 
+    reloadData() {
+        if (this.favFiltering) {
+            console.log("beer list component - reloading data");
+            this.favIds = this.favouritesService.getFavouriteIds();
+            this.beersObservable = this.beerService.getAllBeers();
+        }
+    }
+
     // set current beer for the modal:
     setCurrentBeer(id: number) {
-        console.log("clicked: " + id);
 
         this.currentBeer = this.beerList.filter(function (beer) {
             return beer.id == id;

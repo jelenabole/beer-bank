@@ -1,4 +1,3 @@
-import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { Injectable, setTestabilityGetter } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http"
@@ -14,8 +13,7 @@ export class BeerService {
 
     url: string = 'https://api.punkapi.com/v2/beers';
 
-    constructor(private router: Router,
-        private httpClient: HttpClient) { }
+    constructor(private router: Router, private httpClient: HttpClient) { }
 
     // in constructor:
     /*

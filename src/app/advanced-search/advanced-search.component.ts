@@ -10,7 +10,6 @@ export class AdvancedSearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { 
-    console.log("advanced search vomp");
   }
 
   // TODO - fav() = star button:

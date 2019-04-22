@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // services
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { PersistanceService } from './persistance.service';
 
 // interceptors
 import { RequestsInterceptor } from './httpRequestsInterceptor.service';
@@ -34,6 +35,7 @@ import { environment } from '../environments/environment'; // as per your path
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
 import { BeerItemComponent } from './beer-list/beer-item/beer-item.component';
+import { FavouritePipeModule } from './pipes/favourite-pipe-module';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,6 @@ import { BeerItemComponent } from './beer-list/beer-item/beer-item.component';
     AppRoutingModule,
     MaterialModule,
     NGPrimeModule,
-    CalendarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -67,7 +68,8 @@ import { BeerItemComponent } from './beer-list/beer-item/beer-item.component';
     ToastrModule.forRoot(),
 
     // my pipes:
-    SearchPipeModule
+    SearchPipeModule,
+    FavouritePipeModule
   ],
   providers: [
     {
@@ -86,6 +88,7 @@ import { BeerItemComponent } from './beer-list/beer-item/beer-item.component';
     },
     AuthService,
     AuthGuard,
+    PersistanceService
   ],
   bootstrap: [AppComponent]
 })

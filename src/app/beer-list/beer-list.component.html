@@ -5,7 +5,7 @@
         
         <!-- list of beers -->
         <div class="item-border col-md-6 col-lg-4" 
-            *ngFor="let beer of (beersObservable | async)">
+            *ngFor="let beer of (beersObservable | async) | favourite:favFiltering:favIds">
                 <!-- | search:'name,tagline':query" -->
 
                 <!-- one beer -->
